@@ -1,4 +1,9 @@
 ﻿  Source.cpp
 C:\Users\niels de gruijl\Desktop\School work\Year 2 redo\Term 1\CPP\Week 1\Week 1\Source.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\niels de gruijl\Desktop\School work\Year 2 redo\Term 1\CPP\Week 1\Week 1\Source.cpp(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\niels de gruijl\Desktop\School work\Year 2 redo\Term 1\CPP\Week 1\Week 1\Source.cpp(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\niels de gruijl\Desktop\School work\Year 2 redo\Term 1\CPP\Week 1\Week 1\Source.cpp(242,17): warning C4474: 'scanf_s' : too many arguments passed for format string
+C:\Users\niels de gruijl\Desktop\School work\Year 2 redo\Term 1\CPP\Week 1\Week 1\Source.cpp(242,17): message : placeholders and their parameters expect 0 variadic arguments, but 1 were provided
+C:\Users\niels de gruijl\Desktop\School work\Year 2 redo\Term 1\CPP\Week 1\Week 1\Source.cpp(246,17): warning C4474: 'scanf_s' : too many arguments passed for format string
+C:\Users\niels de gruijl\Desktop\School work\Year 2 redo\Term 1\CPP\Week 1\Week 1\Source.cpp(246,17): message : placeholders and their parameters expect 0 variadic arguments, but 1 were provided
   Week 1.vcxproj -> C:\Users\niels de gruijl\Desktop\School work\Year 2 redo\Term 1\CPP\Week 1\Debug\Week 1.exe

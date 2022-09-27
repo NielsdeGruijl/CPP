@@ -1,0 +1,6 @@
+﻿  Main.cpp
+C:\Users\niels de gruijl\Desktop\School work\Year 2 redo\Term 1\CPP\Week 2\Week2\Week2\Main.h(24,29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\niels de gruijl\Desktop\School work\Year 2 redo\Term 1\CPP\Week 2\Week2\Week2\Main.h(30,29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\niels de gruijl\Desktop\School work\Year 2 redo\Term 1\CPP\Week 2\Week2\Week2\Main.h(44,12): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\niels de gruijl\Desktop\School work\Year 2 redo\Term 1\CPP\Week 2\Week2\Week2\Main.cpp(38,19): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Week2.vcxproj -> C:\Users\niels de gruijl\Desktop\School work\Year 2 redo\Term 1\CPP\Week 2\Week2\Debug\Week2.exe
