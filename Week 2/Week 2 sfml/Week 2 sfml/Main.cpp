@@ -1,7 +1,5 @@
 #include "Sprite.h"
 
-using namespace sf;
-
 int main()
 {
     const int spritesLength = 2;
@@ -14,9 +12,6 @@ int main()
     sprites[1] = sprite1;
 
 	RenderWindow window(VideoMode(800, 600), "SFML Window");
-    
-	//if (!texture.loadFromFile("pepeDrool.jpg"))
-	//	return EXIT_FAILURE;
 
     while (window.isOpen())
     {
@@ -30,7 +25,7 @@ int main()
         }
         // Clear screen
         window.clear();
-        // Draw the sprite
+        // Draw the sprites
         if (!Keyboard::isKeyPressed(Keyboard::Space)) {
 
             for (int i = 0; i < spritesLength; i++)
@@ -39,9 +34,17 @@ int main()
             }
         }
 
-        sprites[0].MoveSprite(1.0f);
-        sprite.MoveSprite(1.0f);
-        sprite1.MoveSprite(0.5f);
+        //Move the Sprites
+
+        if (Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::A) ||
+            Keyboard::isKeyPressed(Keyboard::S) || Keyboard::isKeyPressed(Keyboard::D))
+        {
+            for (int i = 0; i < spritesLength; i++)
+            {
+                sprites[i].MoveSprite(0.5f);
+            }
+        }
+
 
         // Update the window
         window.display();
