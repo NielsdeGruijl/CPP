@@ -4,6 +4,7 @@ int main()
 {
     const int spritesLength = 2;
     SpriteClass sprites[spritesLength];
+    SpriteClass* arr = sprites;
 
     SpriteClass sprite("pepeDrool.jpg", Vector2f(0.1f, 0.1f), Vector2f(0, 0));
     SpriteClass sprite1("chimken.png", Vector2f(0.1f, 0.1f), Vector2f(200, 200));
@@ -41,7 +42,23 @@ int main()
         {
             for (int i = 0; i < spritesLength; i++)
             {
+                if (sprites[i].lastPos != sprites[i].sprite.getPosition() && !sprites[i].lastPosSet)
+                {
+                    sprites[i].lastPos = sprites[i].sprite.getPosition();
+                    sprites[i].lastPosSet = true;
+                }
+
                 sprites[i].MoveSprite(0.5f);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < spritesLength; i++) 
+            {
+                if (sprites[i].lastPosSet) 
+                {
+                    sprites[i].StoreOldPos(sprites[i].lastPos);
+                }
             }
         }
 

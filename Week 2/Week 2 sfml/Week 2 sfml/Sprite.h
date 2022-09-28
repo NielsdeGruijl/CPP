@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdio>
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -14,15 +15,19 @@ public:
     Texture texture;
 	Sprite sprite;
 
-    Vector2f startPos;
-    Vector2f endPos;
+    Vector2f lastPos;
+    //Vector2f endPos;
+
+    bool lastPosSet = false;
+    //bool endPosSet = false;
 
 	void MoveSprite(float speed);
-    void StoreMovement(Vector2f lastMove);
+    void StoreOldPos(Vector2f lastMove);
     void UndoMovements();
 private:
-    Vector2f movementMemory[5];
-    int movementIndex = 0;
+    Vector2f oldPositions[5];
+    Vector2f* arr = oldPositions;
+    int positionIndex = 0;
 };
 
 SpriteClass::SpriteClass() 
@@ -43,7 +48,11 @@ SpriteClass::~SpriteClass()
 
 void SpriteClass::MoveSprite(float speed)
 {
-    if(startPos != sprite.getPosition()) startPos = sprite.getPosition();
+    //if (lastPos != sprite.getPosition() && !lastPosSet)
+    //{
+    //    lastPos = sprite.getPosition();
+    //    lastPosSet = true;
+    //}
 
     if (Keyboard::isKeyPressed(Keyboard::W)) {
         sprite.move(0, -speed);
@@ -58,25 +67,49 @@ void SpriteClass::MoveSprite(float speed)
         sprite.move(speed, 0);
     }
     
-    if (endPos != sprite.getPosition()) endPos = sprite.getPosition();
+    //if (endPos != sprite.getPosition() && !endPosSet)
+    //{
+    //    endPos = sprite.getPosition();
+    //    endPosSet = true;
+    //}
+
 }
 
-void SpriteClass::StoreMovement(Vector2f lastMove)
+void SpriteClass::StoreOldPos(Vector2f lastPos)
 {
-    if (movementIndex >= 4)
+    if (positionIndex > 4)
     {
-        for (int i = 0; i <= movementIndex; i++)
+        //delete &oldPositions[0];
+
+        for (int i = 0; i <= positionIndex; i++)
         {
             if (i < 4)
             {
-                movementMemory[i] = movementMemory[i + 1];
+                oldPositions[i] = oldPositions[i + 1];
             }
         }
+
+        //printf("Oldest position has been removed!");
     }
 
-    movementMemory[movementIndex] = lastMove;
+    printf("Current pos in the array: %d\n", positionIndex);
+    oldPositions[positionIndex] = lastPos;
+    //arr[positionIndex] = lastPos;
 
-    if (movementIndex < 5) movementIndex++;
+    
+
+    for (int i = 0; i <= positionIndex; i++)
+    {
+        printf("LastPos: (%f, %f)", lastPos.x, lastPos.y);
+        printf("Stored positions %d : (%f, %f)\n", i, oldPositions[positionIndex].x, oldPositions[positionIndex].y);
+    }
+
+    
+
+    if (positionIndex < 4) positionIndex++;
+
+    lastPosSet = false;
+    //endPosSet = false;
 }
 
 void SpriteClass::UndoMovements()
