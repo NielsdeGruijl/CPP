@@ -1,0 +1,22 @@
+- MAIN MENU
+	-play button
+	-quit button
+	-erase data button
+
+- FIGHT SCREEN
+	-display character sprites
+	-
+
+- FIGHT MECHANICS
+
+
+- ACTION ORDER
+
+
+- FIGHT RESULTS
+
+
+-HIGH SCORE PERSISTENCY
+
+
+- GAME SETTINGS

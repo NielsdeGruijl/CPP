@@ -5,7 +5,7 @@
 #include "sceneHandler.hpp"
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1000, 800), "SFML with Scenes!");
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML with Scenes!");
     Scene scene1("scene01");
 
     SpriteObject sprite1("soldierSprite", "head.png");
@@ -22,6 +22,7 @@ int main() {
 
     SceneHandler handler;
     handler.addScene(scene1);
+    handler.addScene(scene2);
 
     int counter = 0;
     while (window.isOpen()) {
