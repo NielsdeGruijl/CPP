@@ -5,18 +5,31 @@
 
 - FIGHT SCREEN
 	-display character sprites
-	-
+	-action buttons
+	-feedback text area
+	-healthbars
 
 - FIGHT MECHANICS
-
+	-attack
+	-heal
+	-status effect(?)
+	-enemy randomized actions
+	-enemy "do nothing" button
 
 - ACTION ORDER
-
+	-action performed immediately takes effect
+	-dead characters' turns skipped
 
 - FIGHT RESULTS
-
+	-game over message + high score
+	-disable options except quit
+	-quit returns to main menu
+	-transition to next fight
 
 -HIGH SCORE PERSISTENCY
-
+	-list of high scores in .cmgt file
+	-ranking shows minimum 5 high scores
 
 - GAME SETTINGS
+	-resolution of 1280x720
+	-playable with at least mouse

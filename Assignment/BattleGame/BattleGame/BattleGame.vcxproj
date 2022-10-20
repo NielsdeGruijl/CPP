@@ -143,12 +143,14 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="sceneHandler.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="spriteObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gameObject.hpp" />
     <ClInclude Include="scene.hpp" />
     <ClInclude Include="sceneHandler.hpp" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="spriteObject.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
