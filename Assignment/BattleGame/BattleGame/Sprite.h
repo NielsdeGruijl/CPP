@@ -6,7 +6,7 @@
 class Sprite : public GameObject
 {
 public:
-	Sprite();
+	Sprite(std::string identifier, std::string fileName);
 	~Sprite();
 
 private:
