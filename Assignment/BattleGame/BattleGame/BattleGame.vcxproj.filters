@@ -30,10 +30,10 @@
     <ClCompile Include="scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Sprite.cpp">
+    <ClCompile Include="Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
+    <ClCompile Include="PlayButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,10 +50,10 @@
     <ClInclude Include="spriteObject.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Sprite.h">
+    <ClInclude Include="Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
+    <ClInclude Include="PlayButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

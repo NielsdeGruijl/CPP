@@ -32,6 +32,11 @@ void SpriteObject::setScale(sf::Vector2f scale) {
     sprite.setScale(scale);
 }
 
+sf::Sprite SpriteObject::getSprite() const
+{
+    return this->sprite;
+}
+
 std::string SpriteObject::getSpriteFile() const {
     return this->spriteFile;
 }

@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 
+#include "PlayButton.h"
 #include "scene.hpp"
 #include "spriteObject.hpp"
 #include "Button.h"
@@ -17,8 +18,11 @@ int main() {
     enemy.setPosition(sf::Vector2f(800, 200));
     enemy.setScale(sf::Vector2f(0.5f, 0.5f));
 
-    Button button("button", "pepeDrool.jpg");
-    button.setScale(sf::Vector2f(0.5f, 0.1f));
+    Button button("button", "pepeDrool.jpg", &window);
+    button.action = []() 
+    {
+        
+    };
 
     scene1.addGameObject(player);
     scene1.addGameObject(enemy);

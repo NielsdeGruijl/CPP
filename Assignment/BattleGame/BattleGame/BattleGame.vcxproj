@@ -142,17 +142,17 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="gameObject.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PlayButton.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="sceneHandler.cpp" />
-    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="spriteObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="gameObject.hpp" />
+    <ClInclude Include="PlayButton.h" />
     <ClInclude Include="scene.hpp" />
     <ClInclude Include="sceneHandler.hpp" />
-    <ClInclude Include="Sprite.h" />
     <ClInclude Include="spriteObject.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
