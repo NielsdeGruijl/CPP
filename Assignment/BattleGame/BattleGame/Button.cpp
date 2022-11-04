@@ -1,13 +1,15 @@
 #include "Button.h"
+#include "scene.hpp"
+#include "sceneHandler.hpp"
 
 Button::Button(std::string identifier, std::string spriteFile, sf::RenderWindow* window)
-	: SpriteObject(identifier, spriteFile)
+	: SpriteObject(identifier, spriteFile), action(action)
 {
 	this->window = window;
 }
 
 Button::Button(const Button& other) 
-	: SpriteObject(other.getIdentifier(), other.getSpriteFile()), window(other.window)
+	: SpriteObject(other.getIdentifier(), other.getSpriteFile()), window(other.window), action(other.action)
 {
 }
 
@@ -21,18 +23,16 @@ void Button::update()
 
 void Button::onClick()
 {
-	sf::FloatRect spriteRect = sprite.getGlobalBounds();
+	spriteRect = sprite.getGlobalBounds();
 
-	sf::Event event;
-
-	while (window->pollEvent(event)) 
+	if (scene->GetHandler()->leftMouseButtonPressed) 
 	{
-		if (event.type == sf::Event::MouseButtonPressed) 
+		if (spriteRect.contains(sf::Mouse::getPosition(*window).x, sf::Mouse::getPosition(*window).y))
 		{
-			if (spriteRect.contains(sf::Mouse::getPosition(*window).x, sf::Mouse::getPosition(*window).y))
-			{
-				action();
-			}
+			printf("button clicked");
+			action();
 		}
 	}
+
+
 }

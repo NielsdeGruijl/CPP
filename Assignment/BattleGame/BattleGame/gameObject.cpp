@@ -9,3 +9,8 @@ GameObject::~GameObject() { }
 std::string GameObject::getIdentifier() const {
     return this->identifier;
 }
+
+void GameObject::SetScene(Scene* scene)
+{
+    this->scene = scene;
+}

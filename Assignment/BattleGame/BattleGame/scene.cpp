@@ -6,6 +6,7 @@ Scene::~Scene() { }
 
 void Scene::addGameObject(GameObject& object) {
     this->listOfGameObjects.push_back(&object);
+    object.SetScene(this);
 }
 
 void Scene::update() { 
@@ -22,4 +23,14 @@ void Scene::render(sf::RenderWindow& window) {
 
 std::string Scene::getIdentifier() const {
     return this->identifier;
+}
+
+void Scene::SetHandler(SceneHandler* handler) 
+{
+    this->handler = handler;
+}
+
+SceneHandler* Scene::GetHandler()
+{
+    return this->handler;
 }

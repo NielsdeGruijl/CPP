@@ -9,6 +9,9 @@ class SceneHandler {
         std::map<std::string, Scene*> scenes;
         std::stack<Scene*> scenesStack;
     public:
+        bool leftMouseButtonPressed;
+
+    public:
         SceneHandler(); 
         ~SceneHandler();
     public:

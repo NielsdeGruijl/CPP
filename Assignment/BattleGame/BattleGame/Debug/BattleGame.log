@@ -1,6 +1,2 @@
 ﻿  Main.cpp
-C:\Users\niels\Desktop\school work\Year 2 redo\CPP\Assignment\BattleGame\BattleGame\Main.cpp(23,16): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'std::string'
-  PlayButton.cpp
-  spriteObject.cpp
-  Generating Code...
-  BattleGame.vcxproj -> C:\Users\niels\Desktop\school work\Year 2 redo\CPP\Assignment\BattleGame\Debug\BattleGame.exe
+  BattleGame.vcxproj -> C:\Users\niels de gruijl\Desktop\School work\Year 2 redo\Term 1\CPP\Assignment\BattleGame\Debug\BattleGame.exe

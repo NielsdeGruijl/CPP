@@ -8,6 +8,8 @@ class Button : public SpriteObject
 {
 	private:
 		sf::RenderWindow* window;
+		sf::Event event;
+		sf::FloatRect spriteRect;
 	public:
 		std::function<void()> action;
 	public:	

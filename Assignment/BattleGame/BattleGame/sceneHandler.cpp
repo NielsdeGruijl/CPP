@@ -21,6 +21,8 @@ void SceneHandler::addScene(Scene& scene) {
     if(this->scenes.size() == 1) {
         this->stackScene(scene.getIdentifier());
     }
+
+    scene.SetHandler(this);
 }
 
 void SceneHandler::stackScene(std::string sceneName) {
