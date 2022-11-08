@@ -3,14 +3,15 @@
 #include "sceneHandler.hpp"
 
 Button::Button(std::string identifier, std::string spriteFile, sf::RenderWindow* window)
-	: SpriteObject(identifier, spriteFile), action(action)
+	: SpriteObject(identifier, spriteFile)
 {
 	this->window = window;
 }
 
 Button::Button(const Button& other) 
-	: SpriteObject(other.getIdentifier(), other.getSpriteFile()), window(other.window), action(other.action)
+	: SpriteObject(other.getIdentifier(), other.getSpriteFile())
 {
+	this->window = other.window;
 }
 
 Button::~Button() {};
@@ -29,7 +30,7 @@ void Button::onClick()
 	{
 		if (spriteRect.contains(sf::Mouse::getPosition(*window).x, sf::Mouse::getPosition(*window).y))
 		{
-			printf("button clicked");
+			//printf("button clicked");
 			action();
 		}
 	}

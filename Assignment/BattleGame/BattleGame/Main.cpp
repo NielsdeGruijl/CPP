@@ -1,39 +1,49 @@
 #include <SFML/Graphics.hpp>
 
-#include "PlayButton.h"
 #include "scene.hpp"
 #include "spriteObject.hpp"
 #include "Button.h"
 #include "sceneHandler.hpp"
+#include "enemy.h"
+#include "player.h"
+#include "FightManager.h"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(1280, 720), "ShitShowdown");
     Scene scene1("Main_Menu");
     Scene scene2("Fight_Scene");
 
-    SpriteObject player("player", "player.jpg");
-    player.setPosition(sf::Vector2f(200, 200));
-    player.setScale(sf::Vector2f(0.5f, 0.5f));
-    SpriteObject enemy("enemy", "enemy.jpg");
-    enemy.setPosition(sf::Vector2f(800, 200));
-    enemy.setScale(sf::Vector2f(0.5f, 0.5f));
-
-    SpriteObject bob("bob", "head.png");
-
     SceneHandler handler;
     handler.addScene(scene1);
     handler.addScene(scene2);
 
-    Button button("button", "pepeDrool.jpg", &window);
-    button.setScale(sf::Vector2f(0.5f, 0.1f));
-    button.action = [&handler] {
+    Player player("player", "player.jpg");
+    player.setPosition(sf::Vector2f(200, 200));
+    player.setScale(sf::Vector2f(0.5f, 0.5f));
+    Enemy enemy("enemy", "enemy.jpg");
+    enemy.setScale(sf::Vector2f(0.5f, 0.5f));
+    enemy.setPosition(sf::Vector2f(780, 200));
+
+    Button playButton("button", "pepeDrool.jpg", &window);
+    playButton.setScale(sf::Vector2f(0.5f, 0.1f));
+    playButton.action = [&handler] {
         handler.stackScene("Fight_Scene");
     };
 
-    scene1.addGameObject(player);
-    scene1.addGameObject(enemy);
-    scene1.addGameObject(button);
-    scene2.addGameObject(bob);
+    Button attackButton("attack", "no.png", &window);
+    attackButton.setScale(sf::Vector2f(0.5f, 0.1f));
+    attackButton.setPosition(sf::Vector2f(50, 500));
+    attackButton.action = [&enemy, &player] {
+        player.Attack(&enemy);
+    };
+
+    FightManager manager("manager", &enemy, &player);
+
+    scene1.addGameObject(playButton);
+    scene2.addGameObject(player);
+    scene2.addGameObject(enemy);
+    scene2.addGameObject(attackButton);
+    scene2.addGameObject(manager);
 
     int counter = 0;
     while (window.isOpen()) {

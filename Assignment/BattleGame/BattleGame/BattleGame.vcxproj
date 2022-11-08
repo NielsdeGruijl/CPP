@@ -140,17 +140,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="FightManager.cpp" />
     <ClCompile Include="gameObject.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="PlayButton.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="sceneHandler.cpp" />
     <ClCompile Include="spriteObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
+    <ClInclude Include="enemy.h" />
+    <ClInclude Include="FightManager.h" />
     <ClInclude Include="gameObject.hpp" />
-    <ClInclude Include="PlayButton.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="scene.hpp" />
     <ClInclude Include="sceneHandler.hpp" />
     <ClInclude Include="spriteObject.hpp" />
