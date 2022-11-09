@@ -20,4 +20,5 @@ class FightManager : public GameObject
 		void render(sf::RenderWindow& window) override;
 
 		void ManageTurn();
+		void DecideEnemyMove();
 };

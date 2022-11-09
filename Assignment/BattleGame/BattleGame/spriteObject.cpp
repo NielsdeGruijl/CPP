@@ -32,6 +32,10 @@ void SpriteObject::setScale(sf::Vector2f scale) {
     sprite.setScale(scale);
 }
 
+void SpriteObject::SetColor(sf::Color color) {
+    sprite.setColor(color);
+}
+
 sf::Sprite SpriteObject::getSprite() const
 {
     return this->sprite;

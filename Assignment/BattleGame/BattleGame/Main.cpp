@@ -17,33 +17,78 @@ int main() {
     handler.addScene(scene1);
     handler.addScene(scene2);
 
-    Player player("player", "player.jpg");
-    player.setPosition(sf::Vector2f(200, 200));
+    SpriteObject playerHP("playerHP", "HealthBar.png");
+    playerHP.setScale(sf::Vector2f(1, 0.8f));
+    playerHP.setPosition(sf::Vector2f(20, 10));
+    
+    SpriteObject playerHPBackground(playerHP);
+    playerHPBackground.SetColor(sf::Color::Blue);
+    playerHPBackground.setScale(sf::Vector2f(1, 0.8f));
+    playerHPBackground.setPosition(sf::Vector2f(20, 10));
+
+    Player player("player", "player.jpg", &playerHP);
     player.setScale(sf::Vector2f(0.5f, 0.5f));
-    Enemy enemy("enemy", "enemy.jpg");
+    player.setPosition(sf::Vector2f(200, 200));
+
+    SpriteObject enemyHP("enemyHP", "HealthBar.png");
+    enemyHP.setScale(sf::Vector2f(1, 0.8f));
+    enemyHP.setPosition(sf::Vector2f(window.getSize().x - enemyHP.getSprite().getGlobalBounds().width - 20, 10));
+
+    SpriteObject enemyHPBackground(playerHP);
+    enemyHPBackground.SetColor(sf::Color::Blue);
+    enemyHPBackground.setScale(sf::Vector2f(1, 0.8f));
+    enemyHPBackground.setPosition(sf::Vector2f(window.getSize().x - enemyHP.getSprite().getGlobalBounds().width - 20, 10));
+
+    Enemy enemy("enemy", "enemy.jpg", &enemyHP);
     enemy.setScale(sf::Vector2f(0.5f, 0.5f));
     enemy.setPosition(sf::Vector2f(780, 200));
 
-    Button playButton("button", "pepeDrool.jpg", &window);
-    playButton.setScale(sf::Vector2f(0.5f, 0.1f));
+    Button playButton("button", "Play.png", &window);
+    playButton.setScale(sf::Vector2f(3, 2));
+    playButton.setPosition(sf::Vector2f(window.getSize().x / 2 - playButton.getSprite().getGlobalBounds().width / 2, 150));
     playButton.action = [&handler] {
         handler.stackScene("Fight_Scene");
     };
 
-    Button attackButton("attack", "no.png", &window);
-    attackButton.setScale(sf::Vector2f(0.5f, 0.1f));
-    attackButton.setPosition(sf::Vector2f(50, 500));
+    Button quitButton("quit", "Quit.png", &window);
+    quitButton.setScale(sf::Vector2f(1.8f, 1.8f));
+    quitButton.setPosition(sf::Vector2f(window.getSize().x / 2 - quitButton.getSprite().getGlobalBounds().width / 2, 300));
+    quitButton.action = [] {
+        exit(0);
+    };
+
+    Button attackButton("attack", "Attack.png", &window);
+    attackButton.setScale(sf::Vector2f(2, 2));
+    attackButton.setPosition(sf::Vector2f(125, 570));
     attackButton.action = [&enemy, &player] {
         player.Attack(&enemy);
     };
 
+    Button healButton("heal", "Heal.png", &window);
+    healButton.setScale(sf::Vector2f(2, 2));
+    healButton.setPosition(sf::Vector2f(1280 - (healButton.getSprite().getGlobalBounds().width + 125), 570));
+    healButton.action = [&player] {
+        player.Heal();
+    };
+
+    SpriteObject HUD("HUD", "HUD.png");
+    HUD.setPosition(sf::Vector2f(0, 0));
+
     FightManager manager("manager", &enemy, &player);
 
     scene1.addGameObject(playButton);
+    scene1.addGameObject(quitButton);
+    scene2.addGameObject(HUD);
     scene2.addGameObject(player);
+    scene2.addGameObject(playerHPBackground);
+    scene2.addGameObject(playerHP);
     scene2.addGameObject(enemy);
+    scene2.addGameObject(enemyHPBackground);
+    scene2.addGameObject(enemyHP);
     scene2.addGameObject(attackButton);
+    scene2.addGameObject(healButton);
     scene2.addGameObject(manager);
+
 
     int counter = 0;
     while (window.isOpen()) {

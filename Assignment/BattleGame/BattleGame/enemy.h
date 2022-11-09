@@ -5,10 +5,14 @@ class Enemy : public SpriteObject
 {
 	private:
 		int HP;
+		int maxHP;
+		float healthBarWidth;
+		float newHealthBarWidth;
+		SpriteObject* healthBar;
 	public:
 		bool canUseMove;
 	public:
-		Enemy(std::string identifier, std::string spriteFile);
+		Enemy(std::string identifier, std::string spriteFile, SpriteObject* healthBar);
 		Enemy(const Enemy& other);
 		~Enemy();
 
@@ -17,8 +21,8 @@ class Enemy : public SpriteObject
 		int SetHP();
 		void TakeDamage(const int dmgTaken);
 		void OnDeath();
-		void SelectMove();
-		void Attack();
+		int Attack();
 		void Heal();
 		void DoNothing();
+		void UpdateHealthBar();
 };

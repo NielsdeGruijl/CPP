@@ -23,6 +23,8 @@ class SpriteObject : public GameObject {
         void setScale(sf::Vector2f scale);
         sf::Sprite getSprite() const;
         std::string getSpriteFile() const;
+        void SetColor(sf::Color color);
+        
 };
 
 

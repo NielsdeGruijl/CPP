@@ -22,9 +22,35 @@ void FightManager::render(sf::RenderWindow& window) {};
 
 void FightManager::ManageTurn()
 {
+	//printf("manager enemy HP: %d\n", enemy->GetHP());
+
 	if (!player->canUseMove)
 	{
-		enemy->canUseMove = true;
+		if (enemy->GetHP() > 0) 
+		{
+			DecideEnemyMove();
+		}
 		player->canUseMove = true;
+	}
+}
+
+void FightManager::DecideEnemyMove() 
+{
+	int move = rand() % 3;
+
+	switch (move)
+	{
+	case 0:
+		player->TakeDamage(enemy->Attack());
+		break;
+	case 1:
+		enemy->Heal();
+		break;
+	case 2:
+		enemy->DoNothing();
+		break;
+	default:
+		printf("ur code sucks retard lmao : %d\n", move);
+		break;
 	}
 }

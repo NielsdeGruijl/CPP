@@ -1,23 +1,22 @@
 - MAIN MENU
-	-play button
+	-play button X
 	-quit button
 	-erase data button
 
 - FIGHT SCREEN
-	-display character sprites
-	-action buttons
+	-display character sprites X
+	-action buttons X
 	-feedback text area
-	-healthbars
+	-healthbars X
 
 - FIGHT MECHANICS
-	-attack
-	-heal
-	-status effect(?)
-	-enemy randomized actions
-	-enemy "do nothing" button
+	-attack X
+	-heal X
+	-enemy randomized actions X
+	-enemy "do nothing" button X
 
 - ACTION ORDER
-	-action performed immediately takes effect
+	-action performed immediately takes effect X
 	-dead characters' turns skipped
 
 - FIGHT RESULTS
@@ -31,5 +30,5 @@
 	-ranking shows minimum 5 high scores
 
 - GAME SETTINGS
-	-resolution of 1280x720
-	-playable with at least mouse
+	-resolution of 1280x720	X
+	-playable with at least mouse X
