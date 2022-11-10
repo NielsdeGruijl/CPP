@@ -5,8 +5,6 @@ FightManager::FightManager(std::string identifier, Enemy* enemy, Player* player)
 {
 	this->enemy = enemy;
 	this->player = player;
-	this->enemyMove = &enemy->canUseMove;
-	this->playerMove = &player->canUseMove;
 
 	playerTurn = true;
 }

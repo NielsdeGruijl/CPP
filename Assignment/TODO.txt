@@ -1,0 +1,8 @@
+TO DO:
+
+- text feedback on screen
+- Game over screen + high score
+- high score saving
+- high score screen
+- erase high scores button
+- add creature sprites

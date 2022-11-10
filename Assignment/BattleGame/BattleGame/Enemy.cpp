@@ -8,6 +8,7 @@ Enemy::Enemy(std::string identifier, std::string spriteFile, SpriteObject* healt
 	canUseMove = false;
 	healthBarWidth = healthBar->getSprite().getScale().x;
 	newHealthBarWidth = healthBarWidth;
+	hpCounter = std::to_string(HP) + "/" + std::to_string(maxHP);
 }
 
 Enemy::Enemy(const Enemy& other) :
@@ -28,6 +29,23 @@ void Enemy::update()
 		OnDeath();
 	}
 };
+
+void Enemy::render(sf::RenderWindow& window)
+{
+	window.draw(this->sprite);
+
+	sf::Font font;
+	font.loadFromFile("ARIBL0.ttf");
+
+	sf::Text text("", font, 30);
+	text.setFillColor(sf::Color::White);
+	text.setPosition(1280 - 370, 15);
+	hpCounter = std::to_string(HP) + "/" + std::to_string(maxHP);
+	text.setString(hpCounter);
+
+	window.draw(text);
+
+}
 
 int Enemy::GetHP() const 
 {
@@ -98,6 +116,9 @@ void Enemy::UpdateHealthBar()
 	newHealthBarWidth = ((float)HP / (float)maxHP) * healthBarWidth;
 
 	healthBar->setScale(sf::Vector2f(newHealthBarWidth, 0.8f));
+
+	hpCounter = std::to_string(HP) + "/" + std::to_string(maxHP);
+	text.setString(hpCounter);
 
 	if (newHealthBarWidth <= 0) {
 		newHealthBarWidth = 0;

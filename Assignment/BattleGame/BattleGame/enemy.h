@@ -1,5 +1,6 @@
 #pragma once
 #include "spriteObject.hpp"
+#include <SFML/Graphics.hpp>
 
 class Enemy : public SpriteObject
 {
@@ -9,6 +10,8 @@ class Enemy : public SpriteObject
 		float healthBarWidth;
 		float newHealthBarWidth;
 		SpriteObject* healthBar;
+		sf::Text text;
+		std::string hpCounter;
 	public:
 		bool canUseMove;
 	public:
@@ -17,6 +20,8 @@ class Enemy : public SpriteObject
 		~Enemy();
 
 		void update() override;
+		void render(sf::RenderWindow& window) override;
+
 		int GetHP() const;
 		int SetHP();
 		void TakeDamage(const int dmgTaken);

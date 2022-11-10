@@ -1,6 +1,6 @@
 - MAIN MENU
 	-play button X
-	-quit button
+	-quit button X
 	-erase data button
 
 - FIGHT SCREEN
@@ -17,7 +17,7 @@
 
 - ACTION ORDER
 	-action performed immediately takes effect X
-	-dead characters' turns skipped
+	-dead characters' turns skipped X
 
 - FIGHT RESULTS
 	-game over message + high score

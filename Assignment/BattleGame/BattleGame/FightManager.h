@@ -8,8 +8,7 @@ class FightManager : public GameObject
 	private:
 		Enemy* enemy;
 		Player* player;
-		bool* enemyMove;
-		bool* playerMove;
+		sf::Text text;
 	public:
 		bool playerTurn;
 	public:	

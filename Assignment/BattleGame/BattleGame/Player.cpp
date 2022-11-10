@@ -28,15 +28,17 @@ void Player::update() {}
 
 void Player::render(sf::RenderWindow& window) {
 	window.draw(this->sprite);
-	sf::Text testText;
-	testText.setFont(sf::Font());
-	testText.setString("Haha Cpeepee");
-	testText.setStyle(sf::Text::Style::Regular);
-	testText.setFillColor(sf::Color::White);
-	testText.setCharacterSize(120);
-	testText.setOrigin(0, 0);
-	testText.setPosition(0, 0);
-	window.draw(testText);
+
+	sf::Font font;
+	font.loadFromFile("ARIBL0.ttf");
+
+	sf::Text text("", font, 30);
+	text.setFillColor(sf::Color::White);
+	text.setPosition(280, 15);
+	hpCounter = std::to_string(HP) + "/" + std::to_string(maxHP);
+	text.setString(hpCounter);
+
+	window.draw(text);
 }
 
 int Player::GetHP() const
@@ -93,6 +95,9 @@ void Player::UpdateHealthBar()
 	newHealthBarWidth = ((float)HP / (float)maxHP) * healthBarWidth;
 
 	healthBar->setScale(sf::Vector2f(newHealthBarWidth, 0.8f));
+
+	hpCounter = std::to_string(HP) + "/" + std::to_string(maxHP);
+	text.setString(hpCounter);
 
 	if (newHealthBarWidth <= 0) {
 		newHealthBarWidth = 0;

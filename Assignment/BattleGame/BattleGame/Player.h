@@ -13,6 +13,7 @@ class Player : public SpriteObject
 		float newHealthBarWidth;
 		SpriteObject* healthBar;
 		sf::Text text;
+		std::string hpCounter;
 	public:	
 		bool canUseMove;
 	public:
