@@ -44,3 +44,9 @@ sf::Sprite SpriteObject::getSprite() const
 std::string SpriteObject::getSpriteFile() const {
     return this->spriteFile;
 }
+
+void SpriteObject::SetTexture(const std::string spriteFile)
+{
+    this->texture.loadFromFile(spriteFile);
+    this->sprite.setTexture(this->texture);
+}

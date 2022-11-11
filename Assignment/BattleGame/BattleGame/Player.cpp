@@ -1,4 +1,5 @@
 #include "player.h"
+#include "TextObject.h"
 
 Player::Player(std::string identifier, std::string spriteFile, SpriteObject* healthBar) :
 	SpriteObject(identifier, spriteFile), healthBar(healthBar)
@@ -26,18 +27,24 @@ Player::~Player() {}
 
 void Player::update() {}
 
-void Player::render(sf::RenderWindow& window) {
+void Player::render(sf::RenderWindow& window) 
+{
 	window.draw(this->sprite);
 
 	sf::Font font;
 	font.loadFromFile("ARIBL0.ttf");
-
-	sf::Text text("", font, 30);
+	
+	hpCounter = std::to_string(HP) + "/" + std::to_string(maxHP);
+	sf::Text text(hpCounter, font, 30);
 	text.setFillColor(sf::Color::White);
 	text.setPosition(280, 15);
-	hpCounter = std::to_string(HP) + "/" + std::to_string(maxHP);
-	text.setString(hpCounter);
 
+	hsString = "Score: " + std::to_string(highScore);
+	sf::Text hsText(hsString, font, 30);
+	hsText.setFillColor(sf::Color::White);
+	hsText.setPosition(window.getSize().x / 2 - hsText.getGlobalBounds().width / 2, 20);
+
+	window.draw(hsText);
 	window.draw(text);
 }
 
@@ -61,8 +68,14 @@ void Player::TakeDamage(const int dmgTaken)
 
 void Player::Attack(Enemy* target) 
 {
-	int dmg = 5;
+	int dmg = rand() % 5 + 5;
 	target->TakeDamage(dmg);
+
+	highScore += dmg;
+
+	moveText = "You attacked and dealt " + std::to_string(dmg) + " damage!";
+
+	printf("HighScore: %d\n", highScore);
 	printf("Player used gun and dealt %d damage\n", dmg);
 	canUseMove = false;
 }
@@ -82,10 +95,10 @@ void Player::Heal()
 
 		UpdateHealthBar();
 	}
+	
+	moveText = "You healed for " + std::to_string(heal) + " HP";
 
-
-	printf("New Healthbar Width: %f\n Old healthbar width: %f\n", newHealthBarWidth, healthBarWidth);
-	printf("Player used heal and healed for %d HP\n", heal);
+	printf("Player healed for %d HP\n", heal);
 	printf("Player HP: %d\n", HP);
 	canUseMove = false;
 }
@@ -106,4 +119,11 @@ void Player::UpdateHealthBar()
 	if (newHealthBarWidth >= healthBarWidth) {
 		newHealthBarWidth = healthBarWidth;
 	}
+}
+
+void Player::Reset()
+{
+	HP = maxHP;
+	UpdateHealthBar();
+	highScore = 0;
 }

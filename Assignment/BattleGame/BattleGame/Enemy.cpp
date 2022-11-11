@@ -3,18 +3,18 @@
 Enemy::Enemy(std::string identifier, std::string spriteFile, SpriteObject* healthBar) :
 	SpriteObject(identifier, spriteFile), healthBar(healthBar)
 {
-	this->HP = SetHP();
-	printf("Enemy HP: %d\n", HP);
 	canUseMove = false;
 	healthBarWidth = healthBar->getSprite().getScale().x;
 	newHealthBarWidth = healthBarWidth;
+	SetHP();
+	printf("Enemy HP: %d\n", HP);
 	hpCounter = std::to_string(HP) + "/" + std::to_string(maxHP);
 }
 
 Enemy::Enemy(const Enemy& other) :
 	SpriteObject(other.getIdentifier(), other.getSpriteFile())
 {
-	this->HP = SetHP();
+	SetHP();
 	printf("Enemy HP: %d\n", HP);
 	canUseMove = false;
 	healthBarWidth = healthBar->getSprite().getScale().x;
@@ -52,10 +52,11 @@ int Enemy::GetHP() const
 	return this->HP;
 }
 
-int Enemy::SetHP() 
+void Enemy::SetHP() 
 {
 	maxHP = rand() % 10 + 25;
-	return maxHP;
+	HP = maxHP;
+	UpdateHealthBar();
 }
 
 void Enemy::TakeDamage(const int dmgTaken)
@@ -73,14 +74,35 @@ void Enemy::TakeDamage(const int dmgTaken)
 
 void Enemy::OnDeath()
 {
-	HP = SetHP();
+	int enemySkin = rand() % 3;
+	std::string enemySprite;
 
-	UpdateHealthBar();
+	switch (enemySkin)
+	{
+	case 0:
+		enemySprite = "Enemy1.png";
+		break;
+	case 1:
+		enemySprite = "Enemy2.png";
+		break;
+	case 2:
+		enemySprite = "Enemy3.png";
+		break;
+	default:
+		enemySprite = "Enemy1.png";
+		break;
+	}
+	
+	this->SetTexture(enemySprite);
+	SetHP();
 }
 
 int Enemy::Attack()
 {
 	int dmg = rand() % 10 + 3;
+
+	moveText = "Enemy attacked and dealt " + std::to_string(dmg) + " damage!";
+
 	printf("Enemy attacked and dealt %d damage!\n", dmg);
 	return dmg;
 }
@@ -103,12 +125,16 @@ void Enemy::Heal()
 	//newHealthBarWidth += oneHP * randHP;
 	//healthBar->setScale(sf::Vector2f(newHealthBarWidth, 0.8f));
 
+	moveText = "Enemy healed for " + std::to_string(randHP) + " HP!";
+
 	printf("Enemy healed for %d HP!\n", randHP);
 }
 
 void Enemy::DoNothing()
 {
-	printf("Enemy has braindamage, it did nothing!\n");
+	moveText = "The enemy did nothing!";
+
+	printf("The enemy did nothing!\n");
 }
 
 void Enemy::UpdateHealthBar()

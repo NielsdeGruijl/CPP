@@ -13,8 +13,12 @@ class Player : public SpriteObject
 		float newHealthBarWidth;
 		SpriteObject* healthBar;
 		sf::Text text;
+		sf::Text hsText;
 		std::string hpCounter;
+		std::string hsString;
 	public:	
+		int highScore = 0;
+		std::string moveText;
 		bool canUseMove;
 	public:
 		Player(std::string identifier, std::string spriteFile, SpriteObject* healthBar);
@@ -31,5 +35,8 @@ class Player : public SpriteObject
 		void Heal();
 
 		void UpdateHealthBar();
+		void ShowHighScore();
+
+		void Reset();
 
 };

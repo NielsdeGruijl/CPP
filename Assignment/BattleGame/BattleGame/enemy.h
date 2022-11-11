@@ -14,6 +14,7 @@ class Enemy : public SpriteObject
 		std::string hpCounter;
 	public:
 		bool canUseMove;
+		std::string moveText;
 	public:
 		Enemy(std::string identifier, std::string spriteFile, SpriteObject* healthBar);
 		Enemy(const Enemy& other);
@@ -23,7 +24,7 @@ class Enemy : public SpriteObject
 		void render(sf::RenderWindow& window) override;
 
 		int GetHP() const;
-		int SetHP();
+		void SetHP();
 		void TakeDamage(const int dmgTaken);
 		void OnDeath();
 		int Attack();

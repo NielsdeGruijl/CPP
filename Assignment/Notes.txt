@@ -6,7 +6,7 @@
 - FIGHT SCREEN
 	-display character sprites X
 	-action buttons X
-	-feedback text area
+	-feedback text area 
 	-healthbars X
 
 - FIGHT MECHANICS

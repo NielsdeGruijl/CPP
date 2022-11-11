@@ -24,6 +24,8 @@ class SpriteObject : public GameObject {
         sf::Sprite getSprite() const;
         std::string getSpriteFile() const;
         void SetColor(sf::Color color);
+        void SetTexture(const std::string spriteFile);
+
         
 };
 
